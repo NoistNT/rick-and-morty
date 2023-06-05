@@ -7,9 +7,8 @@ const getAPIData = async () => {
     await syncCharactersToDB()
     await syncLocationToDB()
     await syncOriginToDB()
-    console.log('All data has been successfully loaded into database!')
   } catch (error) {
-    console.error(error)
+    console.error('Data sync error', error)
     return error
   }
 }

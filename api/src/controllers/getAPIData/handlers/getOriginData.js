@@ -15,7 +15,7 @@ const getAPIDataForOrigin = async () => {
     })
     return origins
   } catch (error) {
-    console.error(error)
+    console.error('Error retrieving origins', error)
     return error
   }
 }
@@ -30,13 +30,15 @@ const loadOrigin = async () => {
       console.log('Origin data loaded into database successfully!')
     }
   } catch (error) {
-    console.log(error)
-    // console.error('Error loading origin data into database')
+    console.error('Error loading origin data into database', error)
     return error
   }
 }
 
 // Synchronize data to database
-const syncOriginToDB = async () => await loadOrigin()
+const syncOriginToDB = async () => {
+  if (await loadOrigin()) console.log('✔ - Origin data synced to database')
+  console.log('✔ - Origin data is up to date')
+}
 
 module.exports = syncOriginToDB

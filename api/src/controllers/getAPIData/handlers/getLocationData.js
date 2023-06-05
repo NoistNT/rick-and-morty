@@ -5,9 +5,15 @@ const { Location } = require('../../../db')
 
 // Get data from external API
 const getAPIDataForLocation = async () => {
-  const { data } = await axios.get(`${URL}/location`)
+  const id = []
+
+  for (let i = 1; i < 127; i++) {
+    id.push(i)
+  }
+
+  const { data } = await axios.get(`${URL}/location/${id}`)
   try {
-    const locations = data.results.map((location) => {
+    const locations = data.map((location) => {
       return {
         id: location.id,
         name: location.name,
@@ -20,7 +26,7 @@ const getAPIDataForLocation = async () => {
     })
     return locations
   } catch (error) {
-    console.error(error)
+    console.error('Error retrieving location', error)
     return error
   }
 }
@@ -35,12 +41,15 @@ const loadLocation = async () => {
       console.log('Location data loaded into database successfully!')
     }
   } catch (error) {
-    console.error(`Error loading location data into database`)
+    console.error(`Error loading location data into database`, error)
     return error
   }
 }
 
 // Synchronize data to database
-const syncLocationToDB = async () => await loadLocation()
+const syncLocationToDB = async () => {
+  if (await loadLocation()) console.log('✔ - Location data synced to database')
+  console.log('✔ - Location data is up to date')
+}
 
 module.exports = syncLocationToDB

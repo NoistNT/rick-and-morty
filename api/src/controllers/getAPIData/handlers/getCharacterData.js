@@ -1,31 +1,35 @@
 require('dotenv').config()
 const axios = require('axios')
-const { URL } = process.env
+const { URL, CHARACTERS_TOTAL } = process.env
 const { Character } = require('../../../db')
 
 // Get data from external API
 const getAPIDataForCharacters = async () => {
-  const { data } = await axios.get(`${URL}/character`)
-  try {
-    const characters = data.results.map((character) => {
-      return {
-        id: character.id,
-        name: character.name,
-        status: character.status,
-        species: character.species,
-        type: character.type || 'Unknown',
-        gender: character.gender,
-        image: character.image,
-        episode: character.episode ? character.episode : undefined,
-        url: character.url,
-        created: character.created
+  const characters = []
+
+  for (let id = 1; id <= CHARACTERS_TOTAL; id++) {
+    try {
+      const { data } = await axios.get(`${URL}/character/${id}`)
+      const character = {
+        id: data.id,
+        name: data.name,
+        status: data.status,
+        species: data.species,
+        type: data.type || 'Unknown',
+        gender: data.gender,
+        image: data.image,
+        episode: data.episode ? data.episode : 'None',
+        url: data.url,
+        created: data.created
       }
-    })
-    return characters
-  } catch (error) {
-    console.error(error)
-    return error
+      characters.push(character)
+    } catch (error) {
+      console.error(`Error retrieving character with id ${id}`, error)
+      return error
+    }
   }
+
+  return characters
 }
 
 // Load the retrieved data into the Character table
@@ -38,13 +42,16 @@ const loadCharacters = async () => {
       console.log('Characters data loaded into database successfully!')
     }
   } catch (error) {
-    console.log(error)
-    // console.error('Error loading characters data into database')
+    console.error('Error loading characters data into database', error)
     return error
   }
 }
 
 // Synchronize data to database
-const syncCharactersToDB = async () => await loadCharacters()
+const syncCharactersToDB = async () => {
+  if (await loadCharacters())
+    console.log('✔ - Character data synced to database')
+  console.log('✔ - Character data is up to date')
+}
 
 module.exports = syncCharactersToDB
