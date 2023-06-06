@@ -17,15 +17,18 @@ const getAPIDataForCharacters = async () => {
         species: data.species,
         type: data.type || 'Unknown',
         gender: data.gender,
+        origin: data.origin,
         image: data.image,
         episode: data.episode ? data.episode : 'None',
         url: data.url,
         created: data.created
       }
       characters.push(character)
+      console.log(`${character.name} loaded`)
     } catch (error) {
-      console.error(`Error retrieving character with id ${id}`, error)
-      return error
+      throw new Error(
+        `Error retrieving character with id ${id}. ${error.message}`
+      )
     }
   }
 
@@ -39,19 +42,17 @@ const loadCharacters = async () => {
     if (!characters.length) {
       const charactersData = await getAPIDataForCharacters()
       await Character.bulkCreate(charactersData)
-      console.log('Characters data loaded into database successfully!')
+      console.log('✔ - Characters data loaded into database successfully!')
     }
+    console.log('✔ - Character data is up to date')
   } catch (error) {
-    console.error('Error loading characters data into database', error)
-    return error
+    throw new Error(`Error loading characters data into database. ${error}`)
   }
 }
 
 // Synchronize data to database
 const syncCharactersToDB = async () => {
-  if (await loadCharacters())
-    console.log('✔ - Character data synced to database')
-  console.log('✔ - Character data is up to date')
+  await loadCharacters()
 }
 
 module.exports = syncCharactersToDB

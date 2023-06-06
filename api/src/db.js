@@ -38,15 +38,13 @@ sequelize.models = Object.fromEntries(capsEntries)
 
 // In sequelize.models we have all models to import as a property
 // Destructure models to relate them
-const { Character, Location, Origin } = sequelize.models
+const { Character, Location } = sequelize.models
 
 // Establishing relationships between models
-Character.hasOne(Location)
-Character.hasOne(Origin)
+Character.belongsTo(Location)
 Location.hasMany(Character)
-Origin.hasMany(Character)
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize // para importart la conexión { conn } = require('./db.js');
+  ...sequelize.models, // to be able to import like this. const { Product, User } = require('./db.js');
+  conn: sequelize // to be able to import like this. { conn } = require('./db.js');
 }

@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      origin: {
+        type: DataTypes.JSONB,
+        allowNull: false
+      },
       image: {
         type: DataTypes.STRING,
         allowNull: false
