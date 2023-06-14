@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCharacters } from './characterHandler'
-import Cards from '../../components/Cards/Cards'
+import { Cards } from '../../components/index'
 
 export default function Character() {
   const dispatch = useDispatch()

@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Landing, Home } from './views/index'
+import { Landing, Home, Detail } from './views/index'
 import { Nav } from './components/index'
 import Character from './features/character/Character'
 import './App.css'
@@ -13,6 +13,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
         <Route path='/character' element={<Character />} />
+        <Route path='/character/:id' element={<Detail />} />
       </Routes>
     </div>
   )

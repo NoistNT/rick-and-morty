@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom'
+
 export default function Card({ character }) {
-  const { name, species, gender, image } = character
+  const { id, name, species, gender, image } = character
   return (
     <div>
-      <img src={image} alt={name} />
-      <h2>{name}</h2>
-      <h2>{species}</h2>
-      <h2>{gender}</h2>
+      <Link to={`/character/${id}`}>
+        <img src={image} alt={name} />
+        <h2>{name}</h2>
+        <h2>{species}</h2>
+        <h2>{gender}</h2>
+      </Link>
     </div>
   )
 }
