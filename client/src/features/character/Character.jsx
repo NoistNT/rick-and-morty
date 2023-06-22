@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCharacters } from './characterHandler'
 import { Cards } from '../../components/index'
+import FilterBySpecies from '../../components/Filters/FilterBySpecies'
 
 export default function Character() {
   const dispatch = useDispatch()
@@ -13,6 +14,7 @@ export default function Character() {
 
   return (
     <div>
+      <FilterBySpecies />
       <Cards characters={characters} />
     </div>
   )
