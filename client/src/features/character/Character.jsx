@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCharacters } from './characterHandler'
-import { Cards } from '../../components/index'
-import FilterBySpecies from '../../components/Filters/FilterBySpecies'
+import { Cards, Menu } from '../../components/index'
 
 export default function Character() {
   const dispatch = useDispatch()
@@ -14,7 +13,7 @@ export default function Character() {
 
   return (
     <div>
-      <FilterBySpecies />
+      <Menu />
       <Cards characters={characters} />
     </div>
   )

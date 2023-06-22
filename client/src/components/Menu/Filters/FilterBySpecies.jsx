@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
 import {
-  fetchCharacterBySpecies,
+  fetchCharactersBySpecies,
   fetchCharacters
-} from '../../features/character/characterHandler'
+} from '../../../features/character/characterHandler'
 
 export default function FilterBySpecies() {
   const dispatch = useDispatch()
@@ -10,17 +10,13 @@ export default function FilterBySpecies() {
   const handleFilter = (e) => {
     const selectedFilter = e.target.value
     selectedFilter !== 'all'
-      ? dispatch(fetchCharacterBySpecies(selectedFilter))
+      ? dispatch(fetchCharactersBySpecies(selectedFilter))
       : dispatch(fetchCharacters())
   }
 
   return (
     <div>
-      <select
-        name='filterBySpecies'
-        id='filterByspecies'
-        onChange={handleFilter}
-      >
+      <select name='filterBySpecies' onChange={handleFilter}>
         <option value='all'>--Species--</option>
         <option value='all'>All</option>
         <option value='alien'>Alien</option>
