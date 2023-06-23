@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCharacters } from './characterHandler'
+import { cleanCharacter } from './characterSlice'
 import { Cards, Menu } from '../../components/index'
 
 export default function Character() {
@@ -9,6 +10,7 @@ export default function Character() {
 
   useEffect(() => {
     dispatch(fetchCharacters())
+    return () => dispatch(cleanCharacter())
   }, [dispatch])
 
   return (

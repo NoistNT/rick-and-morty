@@ -21,6 +21,7 @@ export default function FilterByGender() {
         <option value='all'>All</option>
         <option value='male'>Male</option>
         <option value='female'>Female</option>
+        <option value='genderless'>Genderless</option>
         <option value='unknown'>Unknown</option>
       </select>
     </div>
