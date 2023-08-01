@@ -5,12 +5,12 @@ const charactersRouter = require('./charactersRouter')
 const locationsRouter = require('./locationsRouter')
 const episodesRouter = require('./episodesRouter')
 
-const router = Router()
+const mainRouter = Router()
 
 // Setting Routers
-router
+mainRouter
   .use('/character', charactersRouter)
   .use('/location', locationsRouter)
   .use('/episode', episodesRouter)
 
-module.exports = router
+module.exports = mainRouter

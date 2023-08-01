@@ -4,10 +4,10 @@ const {
   getCharacterById
 } = require('../controllers/characters/charactersController')
 
-const router = Router()
+const charactersRouter = Router()
 
 // Routes config
-router.get('/', getCharacters)
-router.get('/:id', getCharacterById)
+charactersRouter.get('/', getCharacters)
+charactersRouter.get('/:id', getCharacterById)
 
-module.exports = router
+module.exports = charactersRouter

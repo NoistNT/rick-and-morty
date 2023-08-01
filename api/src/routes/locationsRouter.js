@@ -4,10 +4,10 @@ const {
   getLocationById
 } = require('../controllers/locations/locationsController')
 
-const router = Router()
+const locationsRouter = Router()
 
 // Routes config
-router.get('/', getLocations)
-router.get('/:id', getLocationById)
+locationsRouter.get('/', getLocations)
+locationsRouter.get('/:id', getLocationById)
 
-module.exports = router
+module.exports = locationsRouter

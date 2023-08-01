@@ -3,7 +3,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const routes = require('./routes/mainRouter.js')
+const router = require('./routes/mainRouter.js')
 
 require('./db.js')
 
@@ -14,6 +14,6 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(cors())
-app.use('/', routes)
+app.use('/', router)
 
 module.exports = app

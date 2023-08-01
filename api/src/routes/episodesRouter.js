@@ -4,10 +4,10 @@ const {
   getEpisodeById
 } = require('../controllers/episodes/episodesController')
 
-const router = Router()
+const episodesRouter = Router()
 
 // Routes config
-router.get('/', getEpisodes)
-router.get('/:id', getEpisodeById)
+episodesRouter.get('/', getEpisodes)
+episodesRouter.get('/:id', getEpisodeById)
 
-module.exports = router
+module.exports = episodesRouter
