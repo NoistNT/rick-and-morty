@@ -2,7 +2,6 @@
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { increment, decrement } from '@/redux/features/counter/counterSlice'
-import Nav from '@/components/Nav'
 
 export default function Character() {
   const { count } = useAppSelector((state) => state.counter)
@@ -18,7 +17,6 @@ export default function Character() {
 
   return (
     <div>
-      <Nav />
       <main className='flex min-h-screen flex-col items-center my-10'>
         <h2>Count: {count}</h2>
         <div className='flex items-center justify-center space-x-6'>
