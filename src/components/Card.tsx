@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Character } from '@/redux/api/characterApi'
+import { Character } from '@/types'
 
 export default function Card({ character }: { character: Character }) {
   return (
