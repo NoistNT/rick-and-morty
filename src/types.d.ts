@@ -36,3 +36,8 @@ export interface CharactersResponse {
   }
   results: Character[]
 }
+
+export interface PaginationProps {
+  prevPage: string | undefined
+  nextPage: string | undefined
+}
