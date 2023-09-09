@@ -1,30 +1,25 @@
-import { FC, useCallback } from 'react'
+import { useAppDispatch } from '@/redux/hooks'
+import { setCurrentPage } from '@/redux/features/character/characterSlice'
+import { PaginationProps } from '@/types'
 
-interface PaginationProps {
-  onNextPage: () => void
-  onPrevPage: () => void
-  hasMore: boolean
-}
+export default function Paginate({
+  prevPage,
+  nextPage
+}: PaginationProps): JSX.Element {
+  const dispatch = useAppDispatch()
 
-const Paginate: FC<PaginationProps> = ({ onNextPage, onPrevPage, hasMore }) => {
-  const handleNextPage = useCallback(() => {
-    onNextPage()
-  }, [onNextPage])
-
-  const handlePrevPage = useCallback(() => {
-    onPrevPage()
-  }, [onPrevPage])
+  const handlePageChange = (page: number): void => {
+    dispatch(setCurrentPage(page))
+  }
 
   return (
     <div>
-      <button onClick={handlePrevPage} disabled={!hasMore}>
+      <button onClick={() => handlePageChange(Number(prevPage))}>
         Prev Page
       </button>
-      <button onClick={handleNextPage} disabled={!hasMore}>
+      <button onClick={() => handlePageChange(Number(nextPage))}>
         Next Page
       </button>
     </div>
   )
 }
-
-export default Paginate
