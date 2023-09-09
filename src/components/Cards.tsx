@@ -1,11 +1,13 @@
 'use client'
 
 import { useGetCharactersQuery } from '@/redux/api/characterApi'
-import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import Card from '@/components/Card'
+import { setCurrentPage } from '@/redux/features/character/characterSlice'
 
 export default function Cards() {
-  const [currentPage, setCurrentPage] = useState(1)
+  const dispatch = useAppDispatch()
+  const { currentPage } = useAppSelector((state) => state.character)
   const { data, error, isLoading } = useGetCharactersQuery({
     page: currentPage
   })
@@ -14,8 +16,7 @@ export default function Cards() {
   const nextPage = data?.info?.next?.split('=').pop()
 
   const handlePageChange = (page: number) => {
-    console.log(page)
-    setCurrentPage(page)
+    dispatch(setCurrentPage(page))
   }
 
   if (isLoading) {
