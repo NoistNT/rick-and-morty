@@ -31,14 +31,14 @@ export default function CharacterDetail({
       {data?.image && (
         <Image src={data.image} alt={data.name} width={300} height={300} />
       )}
-      <h1>{`${data?.name}`}</h1>
-      <h2>{`${data?.status}`}</h2>
-      <h2>{`${data?.species}`}</h2>
-      <h2>{`${data?.type}`}</h2>
-      <h2>{`${data?.gender}`}</h2>
-      <h2>{`${data?.origin?.name}`}</h2>
-      <h2>{`${data?.location?.name}`}</h2>
-      <h2>{`${data?.episode.join(', ')}`}</h2>
+      <h1>{data?.name}</h1>
+      <h2>{data?.status}</h2>
+      <h2>{data?.species}</h2>
+      <h2>{data?.type}</h2>
+      <h2>{data?.gender}</h2>
+      <h2>{data?.origin?.name}</h2>
+      <h2>{data?.location?.name}</h2>
+      <h2>{data?.episode.join(', ')}</h2>
     </div>
   )
 }
