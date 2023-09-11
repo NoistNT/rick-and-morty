@@ -14,6 +14,7 @@ export default function Cards(): JSX.Element {
 
   const prevPage: PageProps = data?.info?.prev?.split('=').pop()
   const nextPage: PageProps = data?.info?.next?.split('=').pop()
+  const lastPage: PageProps = data?.info?.pages
 
   if (isLoading) {
     return <h2 className='text-xl'>Loading...</h2>
@@ -25,13 +26,13 @@ export default function Cards(): JSX.Element {
 
   return (
     <section>
-      <Paginate prevPage={prevPage} nextPage={nextPage} />
+      <Paginate prevPage={prevPage} nextPage={nextPage} lastPage={lastPage} />
       <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl'>
         {data?.results.map((character: Character) => (
           <Card key={character.id} character={character} />
         ))}
       </div>
-      <Paginate prevPage={prevPage} nextPage={nextPage} />
+      <Paginate prevPage={prevPage} nextPage={nextPage} lastPage={lastPage} />
     </section>
   )
 }
