@@ -1,4 +1,4 @@
-import Cards from '@/components/Cards'
+import Cards from '@/app/components/Cards'
 
 export default function Character() {
   return (
