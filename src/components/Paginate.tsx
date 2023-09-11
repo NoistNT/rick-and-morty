@@ -4,7 +4,8 @@ import { PaginationProps } from '@/types'
 
 export default function Paginate({
   prevPage,
-  nextPage
+  nextPage,
+  lastPage
 }: PaginationProps): JSX.Element {
   const dispatch = useAppDispatch()
 
@@ -13,12 +14,27 @@ export default function Paginate({
   }
 
   return (
-    <div>
-      <button onClick={() => handlePageChange(Number(prevPage))}>
-        Prev Page
+    <div className='flex justify-center items-center gap-4 bg-slate-600 py-2 my-4'>
+      <button disabled={!prevPage} onClick={() => handlePageChange(1)}>
+        First
       </button>
-      <button onClick={() => handlePageChange(Number(nextPage))}>
-        Next Page
+      <button
+        disabled={!prevPage}
+        onClick={() => handlePageChange(Number(prevPage))}
+      >
+        Prev
+      </button>
+      <button
+        disabled={!nextPage}
+        onClick={() => handlePageChange(Number(nextPage))}
+      >
+        Next
+      </button>
+      <button
+        disabled={!nextPage}
+        onClick={() => handlePageChange(Number(lastPage))}
+      >
+        Last
       </button>
     </div>
   )
