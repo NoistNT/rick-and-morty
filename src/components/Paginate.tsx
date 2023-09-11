@@ -14,7 +14,7 @@ export default function Paginate({
   }
 
   return (
-    <div className='flex justify-center items-center gap-4 bg-slate-600 py-2 my-4'>
+    <div className='flex justify-center items-center gap-4 bg-slate-600 py-2 my-4 rounded-md'>
       <button disabled={!prevPage} onClick={() => handlePageChange(1)}>
         First
       </button>
