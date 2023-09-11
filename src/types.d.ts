@@ -40,6 +40,7 @@ export interface CharactersResponse {
 export interface PaginationProps {
   prevPage: string | undefined
   nextPage: string | undefined
+  lastPage: number | undefined
 }
 
-export type PageProps = string | undefined
+export type PageProps = string | number | undefined
