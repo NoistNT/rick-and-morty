@@ -44,3 +44,9 @@ export interface PaginationProps {
 }
 
 export type PageProps = string | number | undefined
+
+export interface CharacterState {
+  characters: Character[]
+  currentPage: number
+  name: string
+}

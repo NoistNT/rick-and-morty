@@ -7,8 +7,11 @@ export const characterApi = createApi({
     baseUrl: 'https://rickandmortyapi.com/api/'
   }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<CharactersResponse, { page?: number }>({
-      query: ({ page = 1 }) => `character/?page=${page}`
+    getCharacters: builder.query<
+      CharactersResponse,
+      { page?: number; name?: string }
+    >({
+      query: ({ page = 1, name }) => `character/?page=${page}&name=${name}`
     }),
     getCharacterById: builder.query<CharacterDetail, { id: number }>({
       query: ({ id }) => `character/${id}`

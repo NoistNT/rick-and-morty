@@ -1,5 +1,8 @@
-import { useAppDispatch } from '@/redux/hooks'
-import { setCurrentPage } from '@/redux/features/character/characterSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {
+  setCurrentPage,
+  setName
+} from '@/redux/features/character/characterSlice'
 import { PaginationProps } from '@/types'
 
 export default function Paginate({
@@ -8,13 +11,15 @@ export default function Paginate({
   lastPage
 }: PaginationProps): JSX.Element {
   const dispatch = useAppDispatch()
+  const { name } = useAppSelector((state) => state.character)
 
   const handlePageChange = (page: number): void => {
     dispatch(setCurrentPage(page))
+    dispatch(setName(name))
   }
 
   return (
-    <div className='flex justify-center items-center gap-4 bg-slate-600 py-2 my-4'>
+    <div className='flex justify-center items-center gap-4 bg-slate-600 py-2 my-4 rounded-md'>
       <button disabled={!prevPage} onClick={() => handlePageChange(1)}>
         First
       </button>
