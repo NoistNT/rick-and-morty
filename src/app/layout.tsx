@@ -8,8 +8,8 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Rick and Morty',
-  description: 'Rick and Morty unofficial app'
+  title: 'Rick and Morty - Unofficial App',
+  description: 'Rick and Morty Unofficial app'
 }
 
 export default function RootLayout({
