@@ -15,7 +15,7 @@ export default function Characters(): JSX.Element {
   )
   const { data, error, isLoading } = useGetCharactersQuery({
     page: currentPage,
-    name: name
+    name
   })
 
   useEffect(() => {
@@ -24,13 +24,12 @@ export default function Characters(): JSX.Element {
     }
   }, [data, dispatch])
 
-  const prevPage: PageProps = data?.info?.prev?.split('=').pop()
-  const nextPage: PageProps = data?.info?.next?.split('=').pop()
+  const prevPage: PageProps = (currentPage - 1) as unknown as string
+  const nextPage: PageProps =
+    currentPage === data?.info?.pages
+      ? ''
+      : ((currentPage + 1) as unknown as string)
   const lastPage: PageProps = data?.info?.pages
-
-  console.log(lastPage)
-  console.log('next', nextPage)
-  console.log('nextPage', data?.info?.next)
 
   if (isLoading) {
     return <h2 className='text-xl'>Loading...</h2>
