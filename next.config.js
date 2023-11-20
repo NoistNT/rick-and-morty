@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['rickandmortyapi.com'],
+    remotePatterns: [{ hostname: 'rickandmortyapi.com' }],
     loader: 'default'
   }
 }
