@@ -1,13 +1,11 @@
 'use client'
 
-import { useGetCharacterByIdQuery } from '@/redux/api/characterApi'
 import Image from 'next/image'
+import Link from 'next/link'
 
-export default function CharacterDetail({
-  params
-}: {
-  params: { id: number }
-}) {
+import { useGetCharacterByIdQuery } from '@/redux/api/characterApi'
+
+export default function CharacterDetail({ params }: { params: { id: number } }) {
   const { data, error, isLoading } = useGetCharacterByIdQuery(params)
 
   if (isLoading) {
@@ -27,18 +25,21 @@ export default function CharacterDetail({
   }
 
   return (
-    <div>
-      {data?.image && (
-        <Image src={data.image} alt={data.name} width={300} height={300} />
-      )}
-      <h1>{data?.name}</h1>
-      <h2>{data?.status}</h2>
-      <h2>{data?.species}</h2>
-      <h2>{data?.type}</h2>
-      <h2>{data?.gender}</h2>
-      <h2>{data?.origin?.name}</h2>
-      <h2>{data?.location?.name}</h2>
-      <h2>{data?.episode.join(', ')}</h2>
-    </div>
+    <section>
+      <Link href="/character" prefetch={false}>
+        Go back
+      </Link>
+      <article>
+        {data?.image ? <Image alt={data.name} height={300} src={data.image} width={300} /> : null}
+        <h1>{data?.name}</h1>
+        <h2>{data?.status}</h2>
+        <h2>{data?.species}</h2>
+        <h2>{data?.type}</h2>
+        <h2>{data?.gender}</h2>
+        <h2>{data?.origin.name}</h2>
+        <h2>{data?.location.name}</h2>
+        <h2>{data?.episode.join(', ')}</h2>
+      </article>
+    </section>
   )
 }

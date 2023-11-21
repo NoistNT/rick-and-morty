@@ -1,5 +1,7 @@
-import { Character, CharacterState } from '@/types'
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { Character, CharacterState } from '@/types'
+import type { PayloadAction } from '@reduxjs/toolkit'
+
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: CharacterState = {
   characters: [],
@@ -24,4 +26,5 @@ export const characterSlice = createSlice({
 })
 
 export const { setCurrentPage, setCharacters, setName } = characterSlice.actions
+
 export default characterSlice.reducer

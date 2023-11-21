@@ -1,13 +1,12 @@
 'use client'
 
-import { useState, ChangeEvent } from 'react'
+import type { ChangeEvent } from 'react'
+
+import { useState } from 'react'
+
 import { useGetCharactersQuery } from '@/redux/api/characterApi'
 import { useAppDispatch } from '@/redux/hooks'
-import {
-  setCharacters,
-  setCurrentPage,
-  setName
-} from '@/redux/features/character/characterSlice'
+import { setCharacters, setCurrentPage, setName } from '@/redux/features/character/characterSlice'
 
 export default function SearchBar(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -40,7 +39,7 @@ export default function SearchBar(): JSX.Element {
   //     const changeEvent = {
   //       target: e.target as HTMLInputElement
   //     } as ChangeEvent<HTMLInputElement>
-  //     handleSearch(changeEvent)
+  //     handleSearch(changeEvent);
   //   }
   // }
 
@@ -51,19 +50,20 @@ export default function SearchBar(): JSX.Element {
   }
 
   return (
-    <div className='flex justify-center items-center gap-4'>
+    <div className="flex items-center justify-center gap-4">
       <input
-        name='query'
+        className="rounded-md bg-gray-100 px-2 py-1 text-center text-gray-900 placeholder-gray-500 outline-none"
+        name="query"
+        placeholder="Search character"
+        type="text"
         value={query}
         onChange={handleChange}
         // onKeyDown={handleKeyDown}
-        type='text'
-        placeholder='Search character'
-        className='px-2 py-1 rounded-md text-gray-900 outline-none bg-gray-100 placeholder-gray-500 text-center'
       />
       <button
+        className="rounded-md bg-gray-100 px-2 py-1 text-center text-gray-900 placeholder-gray-500 outline-none"
+        type="button"
         onClick={handleClick}
-        className='px-2 py-1 rounded-md text-gray-900 outline-none bg-gray-100 placeholder-gray-500 text-center'
       >
         All characters
       </button>
