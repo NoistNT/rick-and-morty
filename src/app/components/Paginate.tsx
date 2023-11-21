@@ -1,15 +1,9 @@
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import {
-  setCurrentPage,
-  setName
-} from '@/redux/features/character/characterSlice'
-import { PaginationProps } from '@/types'
+import type { PaginationProps } from '@/types'
 
-export default function Paginate({
-  prevPage,
-  nextPage,
-  lastPage
-}: PaginationProps): JSX.Element {
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { setCurrentPage, setName } from '@/redux/features/character/characterSlice'
+
+export default function Paginate({ prevPage, nextPage, lastPage }: PaginationProps): JSX.Element {
   const dispatch = useAppDispatch()
   const { name } = useAppSelector((state) => state.character)
 
@@ -19,26 +13,17 @@ export default function Paginate({
   }
 
   return (
-    <div className='flex justify-center items-center gap-4 bg-slate-600 py-2 my-4 rounded-md'>
-      <button disabled={!prevPage} onClick={() => handlePageChange(1)}>
+    <div className="my-4 flex items-center justify-center gap-4 rounded-md bg-slate-600 py-2">
+      <button disabled={!prevPage} type="button" onClick={() => handlePageChange(1)}>
         First
       </button>
-      <button
-        disabled={!prevPage}
-        onClick={() => handlePageChange(Number(prevPage))}
-      >
+      <button disabled={!prevPage} type="button" onClick={() => handlePageChange(Number(prevPage))}>
         Prev
       </button>
-      <button
-        disabled={!nextPage}
-        onClick={() => handlePageChange(Number(nextPage))}
-      >
+      <button disabled={!nextPage} type="button" onClick={() => handlePageChange(Number(nextPage))}>
         Next
       </button>
-      <button
-        disabled={!nextPage}
-        onClick={() => handlePageChange(Number(lastPage))}
-      >
+      <button disabled={!nextPage} type="button" onClick={() => handlePageChange(Number(lastPage))}>
         Last
       </button>
     </div>

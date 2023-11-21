@@ -1,5 +1,6 @@
+import type { CharacterDetail, CharactersResponse } from '@/types'
+
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { CharacterDetail, CharactersResponse } from '@/types'
 
 export const characterApi = createApi({
   reducerPath: 'characterApi',
@@ -7,10 +8,7 @@ export const characterApi = createApi({
     baseUrl: 'https://rickandmortyapi.com/api/'
   }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<
-      CharactersResponse,
-      { page?: number; name?: string }
-    >({
+    getCharacters: builder.query<CharactersResponse, { page?: number; name?: string }>({
       query: ({ page = 1, name }) => `character/?page=${page}&name=${name}`
     }),
     getCharacterById: builder.query<CharacterDetail, { id: number }>({
@@ -19,6 +17,6 @@ export const characterApi = createApi({
   })
 })
 
-export const { useGetCharactersQuery, useGetCharacterByIdQuery, reducerPath } =
-  characterApi
+export const { useGetCharactersQuery, useGetCharacterByIdQuery, reducerPath } = characterApi
+
 export default characterApi

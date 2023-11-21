@@ -17,18 +17,20 @@ export default function Character() {
 
   return (
     <div>
-      <main className='flex min-h-screen flex-col items-center my-10'>
+      <main className="my-10 flex min-h-screen flex-col items-center">
         <h2>Count: {count}</h2>
-        <div className='flex items-center justify-center space-x-6'>
+        <div className="flex items-center justify-center space-x-6">
           <button
+            className="rounded-sm bg-red-500 px-4 py-2 text-white"
+            type="button"
             onClick={decrementHandler}
-            className='bg-red-500 px-4 py-2 text-white rounded-sm'
           >
             Decrement
           </button>
           <button
+            className="rounded-sm bg-blue-500 px-4 py-2 text-white"
+            type="button"
             onClick={incrementHandler}
-            className='bg-blue-500 px-4 py-2 text-white rounded-sm'
           >
             Increment
           </button>
