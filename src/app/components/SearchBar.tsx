@@ -39,7 +39,7 @@ export default function SearchBar(): JSX.Element {
   //     const changeEvent = {
   //       target: e.target as HTMLInputElement
   //     } as ChangeEvent<HTMLInputElement>
-  //     handleSearch(changeEvent)
+  //     handleSearch(changeEvent);
   //   }
   // }
 
