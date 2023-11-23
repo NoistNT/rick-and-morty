@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Card({ character }: { character: Character }) {
   return (
     <article className="max-w-[300px] rounded-md bg-indigo-800 text-center">
-      <Link href={`/character/${character.id}`}>
+      <Link href={`/${character.id}`}>
         <Image
           alt={character.name}
           className="rounded-t-md"
