@@ -10,13 +10,7 @@ export default function Nav() {
       </Link>
       <ul className="flex gap-4">
         <li>
-          <Link href="/character">Home</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-        <li>
-          <Link href="/counter">Counter</Link>
+          <Link href="/">Home</Link>
         </li>
       </ul>
       <SearchBar />

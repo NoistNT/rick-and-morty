@@ -1,7 +1,9 @@
+import Characters from './components/Characters'
+
 export default function Home() {
   return (
-    <div>
-      <h1>Landing Page</h1>
-    </div>
+    <main className="my-10 flex min-h-screen flex-col items-center">
+      <Characters />
+    </main>
   )
 }

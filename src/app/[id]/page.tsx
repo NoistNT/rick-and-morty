@@ -26,7 +26,7 @@ export default function CharacterDetail({ params }: { params: { id: number } }) 
 
   return (
     <section>
-      <Link href="/character" prefetch={false}>
+      <Link href="/" prefetch={false}>
         Go back
       </Link>
       <article>
