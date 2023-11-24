@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-indigo-800 py-10 text-center text-xl text-white">
-      <h1>Footer</h1>
+    <footer className="pb-6 text-center leading-[3rem] opacity-70 ">
+      © {new Date().getFullYear()} Rick And Morty Unofficial App
     </footer>
   )
 }
