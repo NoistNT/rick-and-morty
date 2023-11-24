@@ -8,7 +8,7 @@ import { useGetCharactersQuery } from '@/redux/api/characterApi'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { setCharacters } from '@/redux/features/character/characterSlice'
 
-import Paginate from './Paginate'
+import Pagination from './Pagination'
 import Cards from './Cards'
 
 export default function Characters(): JSX.Element {
@@ -40,9 +40,9 @@ export default function Characters(): JSX.Element {
 
   return (
     <main>
-      <Paginate lastPage={lastPage} nextPage={nextPage} prevPage={prevPage} />
+      <Pagination lastPage={lastPage} nextPage={nextPage} prevPage={prevPage} />
       {data ? <Cards characters={characters} /> : null}
-      <Paginate lastPage={lastPage} nextPage={nextPage} prevPage={prevPage} />
+      <Pagination lastPage={lastPage} nextPage={nextPage} prevPage={prevPage} />
     </main>
   )
 }

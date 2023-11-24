@@ -1,5 +1,3 @@
-'use client'
-
 import type { Character } from '@/types'
 
 import Card from './Card'
