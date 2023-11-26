@@ -27,7 +27,7 @@ export interface CharacterDetail {
   created: string
 }
 
-export interface CharactersResponse {
+export interface ApiInfo {
   info: {
     count: number
     pages: number
@@ -38,9 +38,10 @@ export interface CharactersResponse {
 }
 
 export interface PaginationProps {
-  prevPage: string | undefined
-  nextPage: string | undefined
-  lastPage: number | undefined
+  // prevPage: string | undefined
+  // nextPage: string | undefined
+  // lastPage: number | undefined
+  currentPage: number
 }
 
 export type PageProps = string | number | undefined
