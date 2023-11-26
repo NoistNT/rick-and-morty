@@ -1,16 +1,6 @@
 import { Character, CharacterDetail } from '@/types'
-import { API_INFO, CHARACTERS_LIST } from '../constants'
 
-export const getAPIInfo = async () : Promise<string> => {
-  const res = await fetch(API_INFO)
-  const data = await res.json()
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data', data.error)
-  }
-
-  return data.info
-}
+import { CHARACTERS_LIST } from '../constants'
 
 export const getCharacters = async (name?: string): Promise<Character[]> => {
   if (name) {
@@ -23,7 +13,7 @@ export const getCharacters = async (name?: string): Promise<Character[]> => {
   if (!res.ok) {
     throw new Error('Failed to fetch data', data.error)
   }
-  
+
   return data.results
 }
 
