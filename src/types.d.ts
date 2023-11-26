@@ -37,13 +37,6 @@ export interface ApiInfo {
   results: Character[]
 }
 
-export interface PaginationProps {
-  prevPage: string | undefined
-  nextPage: string | undefined
-  // lastPage: number | undefined
-  // currentPage: number
-}
-
 export type PageProps = string | number | undefined
 
 export interface CharacterState {
