@@ -5,9 +5,9 @@ import SearchBar from '@/app/components/SearchBar'
 
 export default function Nav() {
   return (
-    <nav className="sticky top-0 z-50 flex flex-col items-center justify-between gap-4 bg-slate-950 bg-opacity-80 p-3 backdrop-blur-sm backdrop-filter sm:flex-row lg:p-6">
-      <Link className="transition-opacity hover:opacity-80" href="/">
-        <Image alt="Rick and Morty Logo" height={100} src="/rickandmortylogo.webp" width={150} />
+    <nav className="sticky top-0 z-50 flex flex-col items-center justify-between gap-2 py-2 backdrop-blur-md sm:flex-row sm:px-6 md:px-8 md:pb-0 md:pt-2">
+      <Link className="transform transition-transform hover:scale-105" href="/">
+        <Image alt="Rick and Morty Logo" height={67} src="/rickandmortylogo.webp" width={200} />
       </Link>
       <SearchBar />
     </nav>

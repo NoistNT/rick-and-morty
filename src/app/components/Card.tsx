@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function Card({ character }: { character: Character }) {
   return (
-    <article className="max-w-[300px] rounded-md bg-slate-800 bg-opacity-70 text-center">
+    <article className="max-w-[300px] rounded-md border-2 border-neutral-900 text-center shadow-lg transition-all duration-150 ease-in hover:-translate-y-1 hover:bg-neutral-950  hover:shadow-neutral-800">
       <Image
         alt={character.name}
         className="rounded-b-sm rounded-t-md"
@@ -22,9 +22,9 @@ export default function Card({ character }: { character: Character }) {
         </Link>
         <div className="flex items-center justify-center gap-2">
           {character.gender === 'Female' ? (
-            <IoMdFemale className="text-pink-500" size={20} />
+            <IoMdFemale className="text-pink-500" size={24} />
           ) : (
-            <IoMdMale className="text-blue-500" size={20} />
+            <IoMdMale className="text-blue-500" size={24} />
           )}
           <div className="flex gap-8 opacity-80">
             <p>{character.gender}</p>

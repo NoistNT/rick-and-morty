@@ -1,39 +1,45 @@
 'use client'
 
-import type { ChangeEvent } from 'react'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
+import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
-import { useState } from 'react'
-
-import { useGetCharactersQuery } from '@/redux/api/characterApi'
-import { useAppDispatch } from '@/redux/hooks'
-import { setCharacters, setCurrentPage, setName } from '@/redux/features/character/characterSlice'
+import { getCharacterByName } from '../api'
 
 export default function SearchBar(): JSX.Element {
-  const dispatch = useAppDispatch()
-  const [query, setQuery] = useState('')
-  const { data } = useGetCharactersQuery({
-    page: 1,
-    name: query
-  })
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const { replace } = useRouter()
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    if (data) {
-      setQuery(e.target.value)
-      dispatch(setCharacters(data.results))
-      dispatch(setCurrentPage(1))
-      dispatch(setName(e.target.value))
+  const handleSearch = async (term: string) => {
+    const params = new URLSearchParams(searchParams)
+
+    if (term) {
+      params.set('query', term)
+      const characters = await getCharacterByName(term)
+
+      console.log(characters)
+    } else {
+      params.delete('query')
     }
+
+    replace(`${pathname}?${params.toString()}`)
   }
 
   return (
-    <input
-      className="rounded-md bg-neutral-800 bg-opacity-60 px-2 py-1 text-center text-neutral-50 placeholder-neutral-500 outline-none transition-all duration-200 ease-in-out placeholder-shown:text-neutral-400 focus:bg-opacity-80 focus:placeholder-shown:text-neutral-700"
-      id="query"
-      name="query"
-      placeholder="Search character"
-      type="text"
-      value={query}
-      onChange={handleChange}
-    />
+    <div className="relative flex w-full max-w-[300px] items-center gap-2 rounded-md border-2 border-white/20 px-2 py-1 shadow-lg transition-all duration-200 ease-in-out hover:border-white/30 md:max-w-sm">
+      <input
+        className="w-full rounded-md bg-transparent text-center text-[0.95rem] text-neutral-300 placeholder-neutral-500 outline-none transition-all duration-200 ease-in-out placeholder-shown:text-neutral-400 focus:placeholder-shown:text-neutral-700"
+        defaultValue={searchParams.get('query')?.toString()}
+        placeholder="Search character"
+        type="text"
+        onChange={(event) => {
+          handleSearch(event.target.value)
+        }}
+      />
+      <FaMagnifyingGlass
+        className="absolute right-4 top-1/2 -translate-y-1/2 transform text-neutral-500 transition-all duration-200 ease-in-out hover:text-neutral-700"
+        size={20}
+      />
+    </div>
   )
 }
