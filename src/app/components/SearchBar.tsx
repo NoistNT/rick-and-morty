@@ -3,9 +3,7 @@
 import { FaMagnifyingGlass } from 'react-icons/fa6'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
-import { getCharacterByName } from '../api'
-
-export default function SearchBar(): JSX.Element {
+export default function SearchBar({ placeholder }: { placeholder: string }): JSX.Element {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
@@ -15,9 +13,6 @@ export default function SearchBar(): JSX.Element {
 
     if (term) {
       params.set('query', term)
-      const characters = await getCharacterByName(term)
-
-      console.log(characters)
     } else {
       params.delete('query')
     }
@@ -30,11 +25,9 @@ export default function SearchBar(): JSX.Element {
       <input
         className="w-full rounded-md bg-transparent text-center text-[0.95rem] text-neutral-300 placeholder-neutral-500 outline-none transition-all duration-200 ease-in-out placeholder-shown:text-neutral-400 focus:placeholder-shown:text-neutral-700"
         defaultValue={searchParams.get('query')?.toString()}
-        placeholder="Search character"
+        placeholder={placeholder}
         type="text"
-        onChange={(event) => {
-          handleSearch(event.target.value)
-        }}
+        onChange={(event) => handleSearch(event.target.value)}
       />
       <FaMagnifyingGlass
         className="absolute right-4 top-1/2 -translate-y-1/2 transform text-neutral-500 transition-all duration-200 ease-in-out hover:text-neutral-700"

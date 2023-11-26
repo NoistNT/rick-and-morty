@@ -12,7 +12,11 @@ export const getAPIInfo = async () : Promise<string> => {
   return data.info
 }
 
-export const getCharacters = async (): Promise<Character[]> => {
+export const getCharacters = async (name?: string): Promise<Character[]> => {
+  if (name) {
+    return await getCharacterByName(name)
+  }
+
   const res = await fetch(CHARACTERS_LIST)
   const data = await res.json()
 
