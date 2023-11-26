@@ -1,11 +1,6 @@
-'use client'
-
-import { useSearchParams } from 'next/navigation'
-
 import CharactersList from './components/CharactersList'
 
-export default function Home() {
-  const searchParams = useSearchParams()
+export default function Home({ searchParams }: { searchParams: { query?: string } }) {
   const params = new URLSearchParams(searchParams)
 
   const query = params.get('query')?.toString()
