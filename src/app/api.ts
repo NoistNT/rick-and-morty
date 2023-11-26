@@ -7,7 +7,7 @@ export const getCharacters = async (name?: string): Promise<Character[]> => {
     return await getCharacterByName(name)
   }
 
-  const res = await fetch(CHARACTERS_LIST)
+  const res = await fetch(CHARACTERS_LIST, { cache: 'no-store' })
   const data = await res.json()
 
   if (!res.ok) {
@@ -18,7 +18,7 @@ export const getCharacters = async (name?: string): Promise<Character[]> => {
 }
 
 export const getCharacterById = async (id: number): Promise<CharacterDetail> => {
-  const res = await fetch(`${CHARACTERS_LIST}/${id}`)
+  const res = await fetch(`${CHARACTERS_LIST}/${id}`, { cache: 'no-store' })
   const data = await res.json()
 
   if (!res.ok) {
@@ -29,7 +29,7 @@ export const getCharacterById = async (id: number): Promise<CharacterDetail> => 
 }
 
 export const getCharacterByName = async (name: string): Promise<Character[]> => {
-  const res = await fetch(`${CHARACTERS_LIST}?name=${name}`)
+  const res = await fetch(`${CHARACTERS_LIST}?name=${name}`, { cache: 'no-store' })
   const data = await res.json()
 
   if (!res.ok) {
