@@ -21,7 +21,7 @@ export default function SearchBar({ placeholder }: { placeholder: string }): JSX
   }
 
   return (
-    <div className="relative flex w-full max-w-[300px] items-center gap-2 rounded-md border-2 border-white/20 px-2 py-1 shadow-lg transition-all duration-200 ease-in-out hover:border-white/30 md:max-w-sm">
+    <div className="relative flex w-full max-w-[300px] items-center gap-2 rounded-md border-2 border-white/20 bg-neutral-900 bg-opacity-70 px-2 py-1 shadow-lg transition-all duration-200 ease-in-out hover:border-white/30 sm:max-w-xs lg:max-w-lg">
       <input
         className="w-full rounded-md bg-transparent text-center text-[0.95rem] text-neutral-300 placeholder-neutral-500 outline-none transition-all duration-200 ease-in-out placeholder-shown:text-neutral-400 focus:placeholder-shown:text-neutral-700"
         defaultValue={searchParams.get('query')?.toString()}
