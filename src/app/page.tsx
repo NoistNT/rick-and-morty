@@ -1,9 +1,9 @@
-import Characters from './components/Characters'
+import CharactersList from './components/CharactersList'
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <Characters />
+      <CharactersList />
     </main>
   )
 }
