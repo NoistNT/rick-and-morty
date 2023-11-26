@@ -38,10 +38,10 @@ export interface ApiInfo {
 }
 
 export interface PaginationProps {
-  // prevPage: string | undefined
-  // nextPage: string | undefined
+  prevPage: string | undefined
+  nextPage: string | undefined
   // lastPage: number | undefined
-  currentPage: number
+  // currentPage: number
 }
 
 export type PageProps = string | number | undefined

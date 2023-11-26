@@ -9,7 +9,7 @@ export default function Nav() {
       <Link className="transform transition-transform hover:scale-105" href="/">
         <Image alt="Rick and Morty Logo" height={67} src="/rickandmortylogo.webp" width={200} />
       </Link>
-      <SearchBar />
+      <SearchBar placeholder="Search character" />
     </nav>
   )
 }
