@@ -1,30 +1,8 @@
-import type { PaginationProps } from '@/types'
-
-export default function Pagination({ prevPage, nextPage }: PaginationProps): JSX.Element {
+export default function Pagination(): JSX.Element {
   return (
     <div className="my-10 flex items-center justify-center gap-4 rounded-md bg-slate-800 py-2 text-white md:gap-7">
-      <button
-        className={
-          !prevPage
-            ? 'text-neutral-500 transition-colors'
-            : 'hover:opacity-00 opacity-80 transition-colors'
-        }
-        disabled={!prevPage}
-        type="button"
-      >
-        Prev
-      </button>
-      <button
-        className={
-          !nextPage
-            ? 'text-neutral-500 transition-colors'
-            : 'opacity-80 transition-colors hover:opacity-100'
-        }
-        disabled={!nextPage}
-        type="button"
-      >
-        Next
-      </button>
+      <p>Previous</p>
+      <p>Next</p>
     </div>
   )
 }
