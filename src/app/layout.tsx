@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 
 import { Inter } from 'next/font/google'
 
-import { Providers } from '@/redux/Providers'
-
 import './globals.css'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -19,12 +17,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <Nav />
-          {children}
-          <Footer />
-        </Providers>
+      <body className={`${inter.className} bg-neutral-950`}>
+        <Nav />
+        {children}
+        <Footer />
       </body>
     </html>
   )
