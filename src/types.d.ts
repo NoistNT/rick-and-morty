@@ -27,26 +27,9 @@ export interface CharacterDetail {
   created: string
 }
 
-export interface CharactersResponse {
-  info: {
-    count: number
-    pages: number
-    next: string | null
-    prev: string | null
-  }
-  results: Character[]
-}
-
-export interface PaginationProps {
-  prevPage: string | undefined
-  nextPage: string | undefined
-  lastPage: number | undefined
-}
-
-export type PageProps = string | number | undefined
-
-export interface CharacterState {
-  characters: Character[]
-  currentPage: number
-  name: string
+export interface PaginationInfo {
+  count: number
+  pages: number
+  next: string | null
+  prev: string | null
 }
