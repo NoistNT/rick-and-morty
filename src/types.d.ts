@@ -27,20 +27,9 @@ export interface CharacterDetail {
   created: string
 }
 
-export interface ApiInfo {
-  info: {
-    count: number
-    pages: number
-    next: string | null
-    prev: string | null
-  }
-  results: Character[]
-}
-
-export type PageProps = string | number | undefined
-
-export interface CharacterState {
-  characters: Character[]
-  currentPage: number
-  name: string
+export interface PaginationInfo {
+  count: number
+  pages: number
+  next: string | null
+  prev: string | null
 }
