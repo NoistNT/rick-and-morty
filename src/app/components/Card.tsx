@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function Card({ character }: { character: Character }) {
   return (
-    <article className="max-w-[300px] rounded-md border-2 border-neutral-800 bg-slate-900 bg-opacity-80 text-center shadow-lg transition-all duration-150 ease-in hover:-translate-y-1 hover:bg-slate-900 hover:shadow-neutral-800">
+    <article className="hover:drop-shadow-white max-w-[300px] rounded-md border-2 border-neutral-800 bg-slate-900 bg-opacity-80 text-center transition-all duration-150 ease-in-out hover:bg-slate-800 hover:bg-opacity-90">
       <Image
         alt={character.name}
         className="rounded-b-sm rounded-t-md"
