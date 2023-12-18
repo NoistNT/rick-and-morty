@@ -1,6 +1,6 @@
 import { Character, CharacterDetail, PaginationInfo } from '@/types'
 
-import { API_INFO } from '../constants'
+import { API_INFO } from '../../constants'
 
 export const getApiInfo = async (name?: string): Promise<PaginationInfo> => {
   const res = await fetch(`${API_INFO}?name=${name}`, { cache: 'no-store' })
