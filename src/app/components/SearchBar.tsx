@@ -1,12 +1,11 @@
 'use client'
 
 import { FaMagnifyingGlass } from 'react-icons/fa6'
-import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 
 export default function SearchBar({ placeholder }: { placeholder: string }): JSX.Element {
   const searchParams = useSearchParams()
-  const pathname = usePathname()
   const { replace } = useRouter()
 
   const handleSearch = useDebouncedCallback((term: string) => {
@@ -19,8 +18,11 @@ export default function SearchBar({ placeholder }: { placeholder: string }): JSX
       params.delete('name')
       params.set('page', '1')
     }
+    // Correct implementation if characters list would't be rendered in homepage(/)
+    // replace(`${pathname}?${params.toString()}`)
 
-    replace(`${pathname}?${params.toString()}`)
+    // Hardcoded implementation because the character list is rendering in home(/)
+    replace(`/?${params.toString()}`)
   }, 300)
 
   return (
