@@ -33,3 +33,8 @@ export interface PaginationInfo {
   next: string | null
   prev: string | null
 }
+
+export interface ApiInfoResponse {
+  info: PaginationInfo
+  results: CharacterDetail[]
+}
