@@ -1,6 +1,6 @@
 import { ApiInfoResponse, Character, CharacterDetail, PaginationInfo } from '@/types'
 
-const { API_INFO } = process.env
+const API_INFO = 'https://rickandmortyapi.com/api/character'
 
 export const getApiInfo = async (name?: string): Promise<PaginationInfo> => {
   const res = await fetch(`${API_INFO}?name=${name}`, { cache: 'no-store' })
